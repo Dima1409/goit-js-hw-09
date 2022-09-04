@@ -16,3 +16,22 @@ img {
   display: block;
   max-width: 100%;
 }
+.color_btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #1a1919;
+  color: #c3bcbc;
+  padding: 10px 20px;
+  font-size: 22px;
+  margin: 10px;
+  transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
+}
+.color_btn:hover {
+  color: #e7e7e7;
+  background-color: #000000;
+}
+.color_btn:disabled {
+  background-color: #7a7373;
+  pointer-events: none;
+}
