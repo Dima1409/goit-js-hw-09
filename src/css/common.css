@@ -46,6 +46,7 @@ img {
   padding: 20px 30px;
   color: #ffffff;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+  margin: 0 10px;
   margin-bottom: 160px;
 }
 .data_start:hover {
