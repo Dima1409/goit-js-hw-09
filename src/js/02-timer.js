@@ -36,7 +36,7 @@ const options = {
       return;
     }
     refs.btnStart.disabled = true;
-    Notify.failure('Please choose a date in the future')
+    Notify.failure('Please choose a date in the future');
     return;
   },
 };
@@ -75,39 +75,24 @@ function convertMs(ms) {
 refs.btnStart.addEventListener('click', startTime);
 
 function startTime() {
-     let intervalId = setInterval(()=> {
-      let result = Date.parse(refs.inputDate.value) - Date.parse(new Date());
-      document.body.style.backgroundColor = 'inherit'
-      if (result <= 0) {
-    refs.btnStart.disabled = false; 
-    
-    document.body.style.backgroundColor = 'tomato'
-    Notify.success('Time is over');
-    console.log('stop')
-    refs.seconds.textContent= '00'
-    clearInterval(intervalId); 
-    
-    return
-  }refs.btnStart.disabled = true;
-  refs.days.textContent = addLeadingZero(convertMs(result).days);
-  refs.hours.textContent = addLeadingZero(convertMs(result).hours);
-  refs.minutes.textContent = addLeadingZero(convertMs(result).minutes);
-  refs.seconds.textContent = addLeadingZero(convertMs(result).seconds);
-     }, 1000);
-  
+  let intervalId = setInterval(() => {
+    let result = Date.parse(refs.inputDate.value) - Date.parse(new Date());
+    document.body.style.backgroundColor = 'inherit';
+    if (result <= 0) {
+      refs.btnStart.disabled = false;
 
-   
-    
-  
-  
+      document.body.style.backgroundColor = 'grey';
+      Notify.success('Time is over');
+      console.log('stop');
+      refs.seconds.textContent = '00';
+      clearInterval(intervalId);
 
-
-
-  
-  
-  
-  
-  
-} 
-
- 
+      return;
+    }
+    refs.btnStart.disabled = true;
+    refs.days.textContent = addLeadingZero(convertMs(result).days);
+    refs.hours.textContent = addLeadingZero(convertMs(result).hours);
+    refs.minutes.textContent = addLeadingZero(convertMs(result).minutes);
+    refs.seconds.textContent = addLeadingZero(convertMs(result).seconds);
+  }, 1000);
+}
