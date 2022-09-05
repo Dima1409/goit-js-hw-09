@@ -1,5 +1,6 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
   inputDate: document.getElementById('datetime-picker'),
@@ -36,7 +37,7 @@ const options = {
       return;
     }
     refs.btnStart.disabled = true;
-    window.alert('Please choose a date in the future');
+    Notify.failure('Please choose a date in the future')
     return;
   },
 };
@@ -79,6 +80,7 @@ function startTime() {
     document.body.style.backgroundColor = 'teal';
     clearInterval(intervalId);
     refs.btnStart.disabled = false;
+    return
   }
   convertMs(result).seconds -= 1;
   intervalId = setInterval(startTime, 1000);
@@ -87,4 +89,5 @@ function startTime() {
   refs.hours.textContent = addLeadingZero(convertMs(result).hours);
   refs.minutes.textContent = addLeadingZero(convertMs(result).minutes);
   refs.seconds.textContent = addLeadingZero(convertMs(result).seconds);
+  return
 }
