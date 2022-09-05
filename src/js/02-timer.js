@@ -14,7 +14,6 @@ const refs = {
   minutes: document.querySelector('.value[data-minutes]'),
   seconds: document.querySelector('.value[data-seconds]'),
   currentDate: new Date(),
-  second: 0,
 };
 
 // styles ...........................................................
@@ -50,7 +49,7 @@ flatpickr(refs.inputDate, options);
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
-refs.btnStart.addEventListener('click', startTime);
+
 // .......................................................................................
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -72,22 +71,43 @@ function convertMs(ms) {
 }
 
 // .........................................................................................
-let intervalId = null;
-function startTime() {
-  refs.btnStart.disabled = true;
-  let result = Date.parse(refs.inputDate.value) - Date.parse(new Date());
-  if (result <= 0) {
-    document.body.style.backgroundColor = 'teal';
-    clearInterval(intervalId);
-    refs.btnStart.disabled = false;
-    return
-  }
-  convertMs(result).seconds -= 1;
-  intervalId = setInterval(startTime, 1000);
 
+refs.btnStart.addEventListener('click', startTime);
+
+function startTime() {
+     let intervalId = setInterval(()=> {
+      let result = Date.parse(refs.inputDate.value) - Date.parse(new Date());
+      document.body.style.backgroundColor = 'inherit'
+      if (result <= 0) {
+    refs.btnStart.disabled = false; 
+    
+    document.body.style.backgroundColor = 'tomato'
+    Notify.success('Time is over');
+    console.log('stop')
+    refs.seconds.textContent= '00'
+    clearInterval(intervalId); 
+    
+    return
+  }refs.btnStart.disabled = true;
   refs.days.textContent = addLeadingZero(convertMs(result).days);
   refs.hours.textContent = addLeadingZero(convertMs(result).hours);
   refs.minutes.textContent = addLeadingZero(convertMs(result).minutes);
   refs.seconds.textContent = addLeadingZero(convertMs(result).seconds);
-  return
-}
+     }, 1000);
+  
+
+   
+    
+  
+  
+
+
+
+  
+  
+  
+  
+  
+} 
+
+ 
