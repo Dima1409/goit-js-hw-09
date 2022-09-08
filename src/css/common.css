@@ -22,7 +22,7 @@ img {
   border-radius: 4px;
   background-color: #1a1919;
   color: #c3bcbc;
-  padding: 10px 20px;
+  padding: 10px 18px;
   font-size: 22px;
   transition: cubic-bezier(0.25, 0.46, 0.45, 0.94) 250ms;
 }
@@ -43,7 +43,7 @@ img {
   border-radius: 4px;
   cursor: pointer;
   font-size: 26px;
-  padding: 20px 30px;
+  padding: 10px 18px;
   color: #ffffff;
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
   margin: 0 10px;
@@ -77,4 +77,26 @@ img {
   color: #6b4007;
   font-size: 22px;
   text-transform: uppercase;
+}
+
+.form__input {
+  padding: 10px 18px;
+  border: 1px solid #6b4007;
+  border-radius: 4px;
+  background-color: #c3bcbc;
+}
+.form__label {
+  font-size: 26px;
+  color: brown;
+  font-weight: 700;
+}
+
+.form-promise {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: rgb(208, 208, 204);
+  border: 1px dashed #418553;
+  border-radius: 10px;
 }
